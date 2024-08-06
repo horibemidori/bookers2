@@ -9,7 +9,7 @@ class BooksController < ApplicationController
    @book = Book.new
    @books = Book.all
    @book.user_id = current_user.id
-   
+
   end
 
   def create
@@ -27,9 +27,9 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-     
+
   end
-  
+
   def edit
     book = Book.find(params[:id])
     unless book.user.id == current_user.id
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
     end
     @book = Book.find(params[:id])
   end
-  
+
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
