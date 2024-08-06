@@ -1,14 +1,31 @@
+<div class="container">
+ <div class="row">
 
+   <%= render 'books/list', books:@books %>
 
-<h2>Book detail</h2>
-
-<p><%= @book.title %></p>
-
-
-<p><%= @book.body %></p>
-
-<%= link_to "Edit", edit_book_path(@book.id) %>
-
-<% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete %>
-  <% end %>
+   <div class= "col-md-8">
+       <h2>Book detail</h2>
+<table class= "table">
+ <tr>
+  <td><% if current_user.profile_image.attached? %>
+             <%= link_to user_path(@book.user_id) do %>
+              <%= image_tag book.user.get_profile_image, size: "105x105" %>
+             <% end %>
+            <% else %>
+             <%= link_to user_path(@book.user_id) do %>
+              <%= image_tag 'no_image', size: "105x105" %>
+             <% end %>
+            <% end %>
+   </td>
+  <td><p><%= @book.title %></p></td>
+  <td><p><%= @book.body %></p></td>
+  <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success" %></td>
+  <td><% if @book.user == current_user %>
+       <%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-danger" %>
+      <% end %>
+  </td>
+ </tr>
+ </table>
+  </div>
+ </div>
+</div>
