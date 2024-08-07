@@ -1,10 +1,10 @@
 <div class="container">
  <div class="row">
 
-   <%= render 'books/list', book: @book %>
+   <%= render 'books/list', book:@book %>
 
    <div class="col-md-8">
-    <h2>Users</h2> 
+    <h2>Users</h2>
      <table class="table">
       <tr>
        <th>image</th>
@@ -15,12 +15,12 @@
        <% @users.each do |user| %>
        <td>
         <% if current_user.profile_image.attached? %>
-         <%= link_to user_path(book.user_id) do %>
-          <%= image_tag book.user.get_profile_image, size: "105x105" %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag @book.user.get_profile_image(105,105) %>
          <% end %>
         <% else %>
-         <%= link_to user_path(book.user_id) do %>
-          <%= image_tag 'no_image', size: "105x105" %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag 'no_image', size:(105*105) %>
          <% end %>
         <% end %>
        </td>
@@ -32,11 +32,11 @@
          <%= link_to "Show", user_path(user.id) %>
         </span>
        </td>
-       
+
       </tr>
       <% end %>
      </table>
-     
+
   </div>
  </div>
 </div>

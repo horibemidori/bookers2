@@ -1,39 +1,43 @@
+
 <div class="container">
  <div class="row">
-
-   <%= render 'books/list', book: @book %>
+　　
+  <%= render 'books/list', books: @books %>
 
    <div class="col-md-8">
-       
     <h2>Books</h2>
      <table class="table">
       <tr>
-        <th></th>
-        <th>title</th>
-       <th>opinion</th>
+       <th></th>
+       <th><p>Title</p></th>
+       <th><p>Opinion</p></th>
       </tr>
       <tr>
-       <% @books.each do |book| %>
-        <td><% if current_user.profile_image.attached? %>
-             <%= link_to user_path(book.user_id) do %>
-              <%= image_tag book.user.get_profile_image, size: "105x105" %>
-             <% end %>
-            <% else %>
-             <%= link_to user_path(book.user_id) do %>
-              <%= image_tag 'no_image', size: "105x105" %>
-             <% end %>
-            <% end %>
-        </td>
-        <td><span><%= book.title %></span></td>
-        <td><span><%= book.body%></span></td>
+      <% @books.each do |book| %>
+       <td>
+        <% if current_user.profile_image.attached? %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag book.user.get_profile_image(105,105) %>
+         <% end %>
+        <% else %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag 'no_image', size:(105*105) %>
+         <% end %>
+        <% end %>
+       </td>
+       <td>
+        <span>
+         <%= link_to book.title, book_path(book.id)  %>
+        </span>
+       </td>
+       <td>
+        <span><%= book.body %></span>
+       </td>
       </tr>
       <% end %>
      </table>
 
 
-
- 
-      
   </div>
  </div>
 </div>
