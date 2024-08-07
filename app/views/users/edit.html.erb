@@ -1,11 +1,11 @@
 <h2>Users info</h2>
 <%= form_with model: @user do |f| %>
  <p>Name</p>
- <%= f.text_field :title %>
+ <%= f.text_field :name %>
  <p>Image</p>
  <%= f.file_field :image, accept: "image/*" %>
  <p>Introduction</p>
- <%= f.text_area :body %>
+ <%= f.text_area :introduction %>
  <p><%= f.submit "Update User", class:"btn btn-secondary" %></p>
 <% end %>
 

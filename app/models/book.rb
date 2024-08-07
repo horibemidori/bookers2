@@ -1,13 +1,13 @@
 class Book < ApplicationRecord
 
-
+  has_one_attached :profile_image
 
   belongs_to :user
 
   validates :title, presence:true
   validates :body, length: { in:1..200 }
 
-  has_one_attached :profile_image
+  
 
   def get_profile_image(width, height)
    unless profile_image.attached?

@@ -1,72 +1,37 @@
 <div class="container">
   <div class="row">
-   <div class="col-md-3">
-<h2>User info</h2>
- <% if current_user.profile_image.attached? %>
-    <%= image_tag user.profile_image(105,105) %>
- <% else %>
-    <%= image_tag 'no_image', size:(105*105) %>
- <% end %>
-<p>name</p>
- <%= current_user.name %>
-<p>introduction</p>
- <% current_user.introduction %>
+   <%= render 'books/list', books:@books %>
 
-
- <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
-
-  <i class="fa-solid fa-user-gear"></i>
- <% end %>
-
-
-
-<h2>New book</h2>
-<%= form_with model: @book do |f| %>
- <h4>title</h4>
- <%= f.text_field :title %>
-
- <h4>opinion</h4>
- <%= f.text_area :body %>
-
- <%= f.submit 'Create Book' %>
-
-<% end %>
-</div>
-<div class="offset-md-1">
-
-</div>
-<div class="col-md-8">
-<h2>Books</h2>
-
- <table>
-  <tr>
-   <th></th>
-   <th><p>Title</p></th>
-   <th><p>Opinion</p></th>
-  </tr>
-  <tr>
-   <% @books.each do |book| %>
-  <tr>
-   <td><% if current_user.profile_image.attached? %>
+  <div class="col-md-8">
+   <h2>Books</h2>
+    <table>
+     <tr>
+      <th></th>
+      <th><p>Title</p></th>
+      <th><p>Opinion</p></th>
+     </tr>
+     <tr>
+      <% @books.each do |book| %>
+      <td>
+       <% if current_user.profile_image.attached? %>
         <%= link_to user_path(@book.user_id) do %>
-         <%= image_tag user.image, size: "105x105" %>
+         <%= image_tag @book.user.profile_image(105,105) %>
         <% end %>
        <% else %>
         <%= link_to user_path(@book.user_id) do %>
          <%= image_tag 'no_image', size: "105x105" %>
         <% end %>
-       <% end %></td>
-   <td>
-
-    <span>
-      <%= link_to book.title, book_path(book.id)  %>
-
-       </span></td>
-   <td><span><%= book.body %></span></td>
-  </tr>
-   <% end %>
- </table>
-
-</div>
-</div>
+       <% end %>
+      </td>
+      <td>
+       <span><%= link_to book.title, book_path(book.id) %></span>
+      </td>
+      <td>
+       <span><%= book.body %></span>
+      </td>
+     </tr>
+      <% end %>
+    </table>
+  </div>
+ </div>
 </div>
