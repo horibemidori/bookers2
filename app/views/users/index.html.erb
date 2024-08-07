@@ -2,7 +2,9 @@
  <div class="row">
 
    <%= render 'books/list', book:@book %>
+   <div class="offset-md-1">
 
+   </div>
    <div class="col-md-8">
     <h2>Users</h2>
      <table class="table">
@@ -20,7 +22,7 @@
          <% end %>
         <% else %>
          <%= link_to user_path(@book.user_id) do %>
-          <%= image_tag 'no_image', size:(105*105) %>
+          <%= image_tag 'no_image', size:"105x105" %>
          <% end %>
         <% end %>
        </td>

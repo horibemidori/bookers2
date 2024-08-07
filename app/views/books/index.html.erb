@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
    <%= render 'books/list', books:@books %>
+   <div class="offset-md-1">
 
+   </div>
   <div class="col-md-8">
    <h2>Books</h2>
     <table>
@@ -14,13 +16,13 @@
       <% @books.each do |book| %>
       <td>
        <% if current_user.profile_image.attached? %>
-        <%= link_to user_path(@book.user_id) do %>
-         <%= image_tag @book.user.profile_image(105,105) %>
-        <% end %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag @book.user.get_profile_image(105,105) %>
+         <% end %>
        <% else %>
-        <%= link_to user_path(@book.user_id) do %>
-         <%= image_tag 'no_image', size: "105x105" %>
-        <% end %>
+         <%= link_to user_path(@book.user_id) do %>
+          <%= image_tag 'no_image', size: "105x105" %>
+         <% end %>
        <% end %>
       </td>
       <td>
