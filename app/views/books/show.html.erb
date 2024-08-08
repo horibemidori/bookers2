@@ -20,6 +20,7 @@
               <%= image_tag 'no_image', size: "105x105" %>
              <% end %>
             <% end %>
+          <br><%= link_to @book.user.name, user_path(@book.user_id) %>
    </td>
   <td><p><%= @book.title %></p></td>
   <td><p><%= @book.body %></p></td>

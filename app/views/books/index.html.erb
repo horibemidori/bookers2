@@ -24,11 +24,11 @@
       <% @books.each do |book| %>
       <td>
        <% if current_user.profile_image.attached? %>
-         <%= link_to user_path(@book.user_id) do %>
+         <%= link_to user_path(book.user_id) do %>
           <%= image_tag @book.user.get_profile_image(105,105) %>
          <% end %>
        <% else %>
-         <%= link_to user_path(@book.user_id) do %>
+         <%= link_to user_path(book.user_id) do %>
           <%= image_tag 'no_image', size: "105x105" %>
          <% end %>
        <% end %>
