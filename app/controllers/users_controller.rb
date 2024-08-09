@@ -4,7 +4,6 @@ class UsersController < ApplicationController
    @book.user_id = current_user.id
    @users = User.all
    @user = current_user
-
   end
 
   def show
@@ -12,17 +11,14 @@ class UsersController < ApplicationController
    @user = User.find(params[:id])
    @book.user_id = @user.id
    @books = @user.books
-
   end
 
   def edit
-
     user = User.find(params[:id])
      unless user.id == current_user.id
       redirect_to user_path(current_user.id)
      end
    @user = User.find(params[:id])
-
   end
 
    def create
@@ -42,7 +38,6 @@ class UsersController < ApplicationController
     unless user.id == current_user.id
       redirect_to books_path
     end
-
     @user = User.find(params[:id])
     if @user.update(user_params)
      flash[:notice] = "You have updated user successfully."
