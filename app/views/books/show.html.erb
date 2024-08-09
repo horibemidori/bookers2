@@ -13,23 +13,23 @@
     <tr>
      <td>
       <% if current_user.profile_image.attached? %>
-       <%= link_to user_path(@book.user_id) do %>
-        <%= image_tag @book.user.get_profile_image(105,105) %>
+       <%= link_to user_path(@books.user_id) do %>
+        <%= image_tag @books.user.get_profile_image(105,105) %>
        <% end %>
       <% else %>
-       <%= link_to user_path(@book.user_id) do %>
+       <%= link_to user_path(@books.user_id) do %>
         <%= image_tag 'no_image', size: "105x105" %>
        <% end %>
       <% end %>
-      <br><%= link_to @book.user.name, user_path(@book.user_id) %>
+      <br><%= link_to @books.user.name, user_path(@books.user_id) %>
      </td>
-     <td><p><%= @book.title %></p></td>
-     <td><p><%= @book.body %></p></td>
-     <td><% if @book.user == current_user %>
+     <td><p><%= @books.title %></p></td>
+     <td><p><%= @books.body %></p></td>
+     <td><% if @books.user == current_user %>
         <%= link_to "Edit", edit_book_path, class:"btn btn-success" %>
        <% end %>
      </td>
-     <td><% if @book.user == current_user %>
+     <td><% if @books.user == current_user %>
        <%= link_to "Destroy", book_path, method: :delete, class:"btn btn-danger" %>
       <% end %>
      </td>
